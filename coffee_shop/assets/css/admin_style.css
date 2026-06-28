@@ -1,0 +1,762 @@
+/* ============================================================
+   ☕ COFFEE SHOP — ADMIN STYLESHEET
+   Dashboard / Products / Orders / Messages
+   ============================================================ */
+
+/* ============================================================
+   1. VARIABLES
+   ============================================================ */
+
+:root {
+    --primary:        #3e2723;
+    --primary-light:  #6f4e37;
+    --primary-hover:  #b97f3f;
+    --accent:         #d7a86e;
+    --accent-dark:    #b97f3f;
+
+    --bg:             #ede3d9;
+    --bg-alt:         #f5ede3;
+    --card:           #faf4ee;
+    --card-hover:     #f0e6da;
+    --text:           #2e1c14;
+    --text-soft:      #6b4c3b;
+    --text-muted:     #9c7b68;
+    --border:         #ddd0c4;
+    --white:          #ffffff;
+
+    --d-bg:           #150f0b;
+    --d-bg-alt:       #1c1410;
+    --d-card:         #2a1f19;
+    --d-card-hover:   #332520;
+    --d-text:         #f2e8df;
+    --d-text-soft:    #c9a98e;
+    --d-text-muted:   #9c7b68;
+    --d-border:       #3d2d25;
+
+    --shadow-sm:  0 2px 8px  rgba(62,39,35,.08);
+    --shadow-md:  0 5px 20px rgba(62,39,35,.12);
+    --shadow-lg:  0 10px 35px rgba(62,39,35,.16);
+
+    --r-sm:  10px;
+    --r-md:  16px;
+    --r-lg:  24px;
+    --r-xl:  32px;
+    --t:     .3s ease;
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background var(--t), color var(--t);
+    -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+
+/* ============================================================
+   3. ADMIN HEADER
+   ============================================================ */
+
+.admin-header {
+    background: rgba(30,18,13,.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: white;
+    padding: 0 8%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(215,168,110,.12);
+    transition: background var(--t);
+}
+
+/* Logo */
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.admin-logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.admin-logo span {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    white-space: nowrap;
+}
+
+.admin-logo .admin-badge {
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+}
+
+/* Nav */
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-nav a {
+    color: rgba(255,255,255,.8);
+    padding: 8px 14px;
+    border-radius: var(--r-sm);
+    font-weight: 500;
+    font-size: 14px;
+    transition: background var(--t), color var(--t);
+}
+
+.admin-nav a:hover {
+    color: white;
+    background: rgba(215,168,110,.15);
+}
+
+.admin-nav a.active {
+    background: var(--accent);
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Dark mode toggle */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.8);
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--t), color var(--t), transform var(--t);
+}
+
+#theme-toggle:hover {
+    background: rgba(215,168,110,.15);
+    color: var(--accent);
+    transform: rotate(20deg);
+}
+
+
+/* ============================================================
+   4. ADMIN CONTENT WRAPPER
+   ============================================================ */
+
+.admin-content {
+    padding: 50px 8%;
+    min-height: calc(100vh - 75px - 80px);
+}
+
+
+/* ============================================================
+   5. PAGE TITLE
+   ============================================================ */
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 40px;
+    letter-spacing: -.5px;
+    text-align: center;
+    transition: color var(--t);
+}
+
+.title span {
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   6. DASHBOARD CARDS
+   ============================================================ */
+
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 38px 30px;
+    border-radius: var(--r-lg);
+    width: 240px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: background var(--t), transform var(--t), box-shadow var(--t);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    background: var(--card-hover);
+}
+
+.card i {
+    font-size: 38px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.card h3 {
+    color: var(--text-soft);
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+
+/* ============================================================
+   7. PRODUCTS / TABLE HEADER
+   ============================================================ */
+
+.products-header,
+.add-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.products-header h2,
+.add-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+
+/* ============================================================
+   8. TABLES
+   ============================================================ */
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: background var(--t);
+}
+
+.products-table th {
+    background: var(--primary);
+    color: white;
+    padding: 16px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    text-align: left;
+}
+
+.products-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    transition: color var(--t);
+}
+
+.products-table tr:last-child td {
+    border-bottom: none;
+}
+
+.products-table tr:hover td {
+    background: var(--card-hover);
+}
+
+.product-img {
+    width: 65px;
+    height: 65px;
+    border-radius: var(--r-sm);
+    object-fit: cover;
+    border: 2px solid var(--border);
+}
+
+
+/* ============================================================
+   9. BUTTONS
+   ============================================================ */
+
+.btn-add,
+.btn-edit,
+.btn-delete,
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background var(--t), transform var(--t), box-shadow var(--t);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(62,39,35,.2);
+}
+
+.btn-add:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62,39,35,.25);
+}
+
+.btn-edit {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background: #e05252;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c23b3b;
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    background: var(--bg-alt, #f5ede3);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+}
+
+.btn-back:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   10. FORM STYLING
+   ============================================================ */
+
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.product-form {
+    background: var(--card);
+    padding: 45px;
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    transition: background var(--t);
+}
+
+.product-form label {
+    display: block;
+    margin: 18px 0 7px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-soft);
+    transition: color var(--t);
+}
+
+.product-form input,
+.product-form select,
+.product-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: var(--r-sm);
+    border: 1.5px solid var(--border);
+    outline: none;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color var(--t), background var(--t), color var(--t);
+}
+
+.product-form input:focus,
+.product-form select:focus,
+.product-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(215,168,110,.15);
+}
+
+.product-form button[type="submit"] {
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--t), transform var(--t), box-shadow var(--t);
+    box-shadow: 0 4px 18px rgba(62,39,35,.25);
+}
+
+.product-form button[type="submit"]:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(62,39,35,.3);
+}
+
+
+/* ============================================================
+   11. NO ORDERS / EMPTY STATE
+   ============================================================ */
+
+.no-orders {
+    background: var(--card);
+    padding: 60px 40px;
+    border-radius: var(--r-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    margin-top: 40px;
+    transition: background var(--t);
+}
+
+.no-orders i {
+    font-size: 52px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+    opacity: .7;
+}
+
+.no-orders h3 {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.no-orders p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   12. CATEGORY BLOCKS
+   ============================================================ */
+
+.category-title {
+    margin-top: 55px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color var(--t);
+}
+
+.category-title::before {
+    content: '';
+    width: 5px;
+    height: 26px;
+    background: var(--accent);
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.category-block {
+    margin-bottom: 55px;
+}
+
+
+/* ============================================================
+   13. ADMIN FOOTER
+   ============================================================ */
+
+.admin-footer {
+    background: #0f0b09;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 24px;
+    margin-top: 100px;
+    font-size: 13px;
+    border-top: 1px solid rgba(215,168,110,.1);
+    transition: background var(--t);
+}
+
+.admin-footer span {
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   14. DARK MODE
+   ============================================================ */
+
+body.dark-mode {
+    background: var(--d-bg);
+    color: var(--d-text);
+}
+
+body.dark-mode .admin-header {
+    background: rgba(10,7,5,.95);
+    border-bottom-color: rgba(215,168,110,.1);
+}
+
+body.dark-mode .admin-logo span { color: var(--d-text); }
+
+body.dark-mode .admin-nav a {
+    color: rgba(242,232,223,.75);
+}
+
+body.dark-mode .admin-nav a:hover {
+    color: white;
+    background: rgba(215,168,110,.12);
+}
+
+body.dark-mode #theme-toggle {
+    color: rgba(242,232,223,.8);
+}
+
+body.dark-mode .title {
+    color: var(--d-text);
+}
+
+body.dark-mode .card {
+    background: var(--d-card);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .card:hover {
+    background: var(--d-card-hover);
+}
+
+body.dark-mode .card h3 { color: var(--d-text-soft); }
+body.dark-mode .card p  { color: var(--d-text); }
+
+body.dark-mode .products-header h2,
+body.dark-mode .add-header h2 {
+    color: var(--d-text);
+}
+
+body.dark-mode .products-table {
+    background: var(--d-card);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .products-table th {
+    background: #1a1210;
+}
+
+body.dark-mode .products-table td {
+    color: var(--d-text);
+    border-bottom-color: var(--d-border);
+}
+
+body.dark-mode .products-table tr:hover td {
+    background: var(--d-card-hover);
+}
+
+body.dark-mode .product-img {
+    border-color: var(--d-border);
+}
+
+body.dark-mode .btn-back {
+    background: var(--d-card);
+    color: var(--d-text);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .btn-back:hover {
+    background: var(--d-card-hover);
+}
+
+body.dark-mode .product-form {
+    background: var(--d-card);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .product-form label {
+    color: var(--d-text-soft);
+}
+
+body.dark-mode .product-form input,
+body.dark-mode .product-form select,
+body.dark-mode .product-form textarea {
+    background: #3d2d25;
+    color: var(--d-text);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .no-orders {
+    background: var(--d-card);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .no-orders h3 { color: var(--d-text); }
+body.dark-mode .no-orders p  { color: var(--d-text-muted); }
+
+body.dark-mode .category-title { color: var(--d-text); }
+
+body.dark-mode .admin-footer { background: #080504; }
+
+
+/* ============================================================
+   15. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+    .dashboard-cards { gap: 18px; }
+    .card { width: 200px; }
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 16px 5%;
+        gap: 12px;
+    }
+
+    .admin-nav {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+
+
+    .admin-content { padding: 30px 5%; }
+
+    .products-header,
+    .add-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .products-table th,
+    .products-table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .card { width: 100%; }
+
+    .product-form { padding: 28px 22px; }
+}
+
+
+/* Logout Icon */
+.logout-box .bi-cup-hot-fill {
+    font-size: 52px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Logout Link */
+.logout-box a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background var(--t), transform var(--t), box-shadow var(--t);
+    box-shadow: 0 4px 18px rgba(62,39,35,.25);
+}
+
+.logout-box a:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(62,39,35,.3);
+}
+
+/* Theme Toggle — Fixed Button */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(62,39,35,.9);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+    transition: background var(--t), color var(--t);
+}
+
+#theme-toggle:hover {
+    background: var(--accent);
+    color: var(--primary);
+}

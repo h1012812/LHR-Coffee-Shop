@@ -1,0 +1,321 @@
+/* ============================================================
+   ☕ LHR COFFEE — AUTH STYLESHEET
+   Pages: Login / Register / Reset Password / Logout
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ============================================================
+   1. RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* ============================================================
+   2. PAGE CONTAINERS
+   ============================================================ */
+
+.login-container,
+.register-container,
+.reset-container,
+.logout-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ede3d9;
+    padding: 20px;
+    transition: background .3s ease;
+}
+
+
+/* ============================================================
+   3. AUTH BOX
+   ============================================================ */
+
+.login-box,
+.register-box,
+.reset-box,
+.logout-box {
+    width: 100%;
+    max-width: 420px;
+    background: #faf4ee;
+    padding: 50px 45px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(62,39,35,.12);
+    border: 1px solid #e8ddd4;
+    transition: background .3s ease, border-color .3s ease;
+}
+
+
+/* ============================================================
+   4. BRAND
+   ============================================================ */
+
+.auth-brand {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-brand h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #3e2723;
+}
+
+.auth-brand p {
+    font-size: 13px;
+    color: #9c7b68;
+    margin-top: 4px;
+}
+
+
+/* ============================================================
+   5. HEADINGS
+   ============================================================ */
+
+.login-box h2,
+.register-box h2,
+.reset-box h2,
+.logout-box h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3e2723;
+    margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   6. LABELS
+   ============================================================ */
+
+.login-box label,
+.register-box label,
+.reset-box label {
+    display: block;
+    margin-bottom: 7px;
+    margin-top: 18px;
+    color: #6b4c3b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   7. INPUTS
+   ============================================================ */
+
+.login-box input,
+.register-box input,
+.reset-box input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #ddd0c4;
+    border-radius: 10px;
+    background: #fff;
+    color: #3e2723;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .3s, box-shadow .3s, background .3s, color .3s;
+}
+
+.login-box input:focus,
+.register-box input:focus,
+.reset-box input:focus {
+    border-color: #d7a86e;
+    box-shadow: 0 0 0 3px rgba(215,168,110,.15);
+}
+
+
+/* ============================================================
+   8. BUTTONS
+   ============================================================ */
+
+.login-box button,
+.register-box button,
+.reset-box button {
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background: #3e2723;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .3s, transform .3s, box-shadow .3s;
+    box-shadow: 0 4px 18px rgba(62,39,35,.25);
+}
+
+.login-box button:hover,
+.register-box button:hover,
+.reset-box button:hover {
+    background: #b97f3f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(62,39,35,.3);
+}
+
+
+/* ============================================================
+   9. ALERTS
+   ============================================================ */
+
+.error {
+    background: #fde8e8;
+    color: #a53030;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #2d6a3f;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   10. FORM LINKS
+   ============================================================ */
+
+.form-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #9c7b68;
+}
+
+.form-link a {
+    color: #b97f3f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-link a:hover { color: #3e2723; }
+
+
+/* ============================================================
+   11. DIVIDER
+   ============================================================ */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0 8px;
+    color: #c4b5aa;
+    font-size: 13px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8ddd4;
+}
+
+
+/* ============================================================
+   12. LOGOUT BOX
+   ============================================================ */
+
+.logout-box { text-align: center; }
+
+.logout-box p {
+    color: #6b4c3b;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.logout-box a {
+    display: inline-block;
+    padding: 14px 36px;
+    background: #3e2723;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background .3s, transform .3s, box-shadow .3s;
+}
+
+.logout-box a:hover {
+    background: #b97f3f;
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   13. DARK MODE — FULL SUPPORT
+   ============================================================ */
+
+body.dark-mode .login-container,
+body.dark-mode .register-container,
+body.dark-mode .reset-container,
+body.dark-mode .logout-container {
+    background: var(--d-bg);
+}
+
+body.dark-mode .login-box,
+body.dark-mode .register-box,
+body.dark-mode .reset-box,
+body.dark-mode .logout-box {
+    background: var(--d-card);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .login-box h2,
+body.dark-mode .register-box h2,
+body.dark-mode .reset-box h2,
+body.dark-mode .logout-box h2 {
+    color: var(--d-text);
+}
+
+body.dark-mode .login-box label,
+body.dark-mode .register-box label,
+body.dark-mode .reset-box label {
+    color: var(--d-text-soft);
+}
+
+body.dark-mode .login-box input,
+body.dark-mode .register-box input,
+body.dark-mode .reset-box input {
+    background: var(--d-card-input);
+    color: var(--d-text);
+    border-color: var(--d-border);
+}
+
+body.dark-mode .login-box input:focus,
+body.dark-mode .register-box input:focus,
+body.dark-mode .reset-box input:focus {
+    border-color: var(--accent);
+}
+
+body.dark-mode .auth-brand h1 { color: var(--d-text); }
+body.dark-mode .auth-brand p   { color: var(--d-text-muted); }
+
+body.dark-mode .form-link { color: var(--d-text-muted); }
+
+body.dark-mode .logout-box p { color: var(--d-text-soft); }
+
+body.dark-mode .auth-divider { color: var(--d-text-muted); }
+body.dark-mode .auth-divider::before,
+body.dark-mode .auth-divider::after { background: var(--d-border); }
